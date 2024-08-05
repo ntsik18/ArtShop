@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Welcome to ArtShop!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Georgia, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .header {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .auth-links {
+            font-size: 0.8em;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .search-bar input {
+            font-size: 1em;
+            padding: 5px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            font-size: 1em;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">Welcome to ArtShop!</div>
+    <div class="auth-links">
+        <a href="#" th:href="@{/view/registration}">Sign up</a> /
+        <a href="#" th:href="@{/view/login}">Log in</a>
+    </div>
+    <div class="search-bar">
+        <input type="text" id="searchQuery" placeholder="Search" />
+        <button type="button" onclick="search()">🔍</button>
+        <script>
+            function search() {
+                const query = document.getElementById('searchQuery').value;
+                const url = /*[[${'/artshop/view/search/all'}]]*/ '/artshop/view/search/all'; // Thymeleaf syntax to resolve the URL
+<!--                window.location.href = url + '?query=' + encodeURIComponent(query);-->
+                window.location.href = url;
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>
+
+<!--th:field="*{searchQuery}"-->

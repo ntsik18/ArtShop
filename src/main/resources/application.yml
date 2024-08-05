@@ -1,0 +1,44 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ArtShop
+    username: postgres
+    password: ninq
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+#      ddl-auto: create-drop
+#      naming:
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      database: postgresql
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+
+server:
+  servlet:
+    context-path: /artshop
+
+application:
+  security:
+    jwt:
+      secret-key: 0fd1610831896ef2d1fa9bb607362ad3238af77bba598983dbabd730a80a118b
+      expiration: 86400000
+
+  file:
+    upload:
+      photos-output-path: /Users/os/Desktop/images
+
+#  mailing:
+#    frontend:
+#      activation-url: http://localhost:8080/artshop/view/register
+#      activation-url: http://localhost:8080/artshop/auth/activate-account?token=' + ${activation_code}
